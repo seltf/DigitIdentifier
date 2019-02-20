@@ -17,13 +17,6 @@ public class UILayout {
     private JButton detectButton;
     private JLabel text;
 
-    //Paint Vars
-
-
-    private boolean isDrawing;
-
-    private Graphics graphicsDrawing;
-
     public UILayout() {
 
         //creating main window
@@ -40,10 +33,7 @@ public class UILayout {
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
-        //setting up the canvas
-        //mainWindow.add(canvasPanel, BorderLayout.CENTER);
-        //canvasPanel.setBackground(Color.white);
-        //canvasPanel.setSize(new Dimension(300, 300));
+        //adding the canvas
         mainWindow.add(new CanvasHandler());
 
         //adding components to content panel
