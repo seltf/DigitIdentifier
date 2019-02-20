@@ -1,7 +1,7 @@
 /**
  * Created by alex on 19/02/2019.
  */
-import java.awt.*;
+import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,19 +10,12 @@ import javax.swing.JLabel;
 
 public class UILayout {
 
-    //Swing Vars
+    //swing Vars
     private JFrame mainWindow;
     private JPanel canvasPanel;
     private JLabel digitOutput;
     private JButton detectButton;
     private JLabel text;
-
-    //Paint Vars
-
-
-    private boolean isDrawing;
-
-    private Graphics graphicsDrawing;
 
     public UILayout() {
 
@@ -40,10 +33,8 @@ public class UILayout {
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
-        //setting up the canvas
-        mainWindow.add(canvasPanel, BorderLayout.CENTER);
-        canvasPanel.setBackground(Color.white);
-        canvasPanel.setSize(new Dimension(300, 300));
+        //adding the canvas
+        mainWindow.add(new CanvasHandler());
 
         //adding components to content panel
         contentPanel.add(detectButton);
@@ -52,6 +43,7 @@ public class UILayout {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
+
     }
 
 }
