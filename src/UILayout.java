@@ -41,9 +41,10 @@ public class UILayout {
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
         //setting up the canvas
-        mainWindow.add(canvasPanel, BorderLayout.CENTER);
-        canvasPanel.setBackground(Color.white);
-        canvasPanel.setSize(new Dimension(300, 300));
+        //mainWindow.add(canvasPanel, BorderLayout.CENTER);
+        //canvasPanel.setBackground(Color.white);
+        //canvasPanel.setSize(new Dimension(300, 300));
+        mainWindow.add(new CanvasHandler());
 
         //adding components to content panel
         contentPanel.add(detectButton);
@@ -52,6 +53,7 @@ public class UILayout {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
+
     }
 
 }
