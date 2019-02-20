@@ -1,7 +1,7 @@
 /**
  * Created by alex on 19/02/2019.
  */
-import java.awt.*;
+import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

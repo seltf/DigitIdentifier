@@ -1,5 +1,8 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class CanvasHandler extends JPanel {
 
