@@ -13,7 +13,7 @@ public class Main {
                     new UILayout();
 
                 } catch (Exception e) {
-                    System.out.println("Error occured while initiating "
+                    System.out.println("Error occurred while initiating "
                             + "the swing thread.");
                 }
 
