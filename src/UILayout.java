@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 public class UILayout {
 
-    //Swing Vars
+    //swing Vars
     private JFrame mainWindow;
     private JPanel canvasPanel;
     private JLabel digitOutput;
