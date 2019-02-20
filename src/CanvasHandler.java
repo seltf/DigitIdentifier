@@ -23,6 +23,28 @@ public class CanvasHandler extends JPanel {
 
     public CanvasHandler() {
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        //mouse listeners
+        this.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e){
+                setStartPoint(e.getX(), e.getY());
+            }
+
+        });
+
+        this.addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent e){
+                setEndPoint(e.getX(), e.getY());
+                repaint();
+            }
+        });
+
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e){
+                setEndPoint(e.getX(), endY);
+                repaint();
+            }
+        });
     }
 
     //canvas size
