@@ -12,14 +12,13 @@ public class UILayout {
 
     //Swing Vars
     private JFrame mainWindow;
-    private JPanel canvas;
+    private JPanel canvasPanel;
     private JLabel digitOutput;
     private JButton detectButton;
     private JLabel text;
 
     //Paint Vars
-    private int prevX;
-    private int prevY;
+
 
     private boolean isDrawing;
 
@@ -36,23 +35,22 @@ public class UILayout {
 
         //creating components
         detectButton = new JButton ("Detect");
-        canvas = new JPanel();
-
+        canvasPanel = new JPanel();
 
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
         //setting up the canvas
-        mainWindow.add(canvas, BorderLayout.CENTER);
-        canvas.setBackground(Color.white);
-        canvas.setSize(new Dimension(300, 300));
+        mainWindow.add(canvasPanel, BorderLayout.CENTER);
+        canvasPanel.setBackground(Color.white);
+        canvasPanel.setSize(new Dimension(300, 300));
 
         //adding components to content panel
         contentPanel.add(detectButton);
 
         //final main window steps
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainWindow.pack();
+        mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
     }
 
