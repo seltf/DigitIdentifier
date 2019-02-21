@@ -9,11 +9,12 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
-public class CanvasHandler extends JPanel {
+public class ActionHandler extends JPanel {
 
     //drawing vars
     private int startX = 0;
@@ -21,7 +22,7 @@ public class CanvasHandler extends JPanel {
     private int endX = 0;
     private int endY = 0;
 
-    public CanvasHandler() {
+    public ActionHandler() {
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         //mouse listeners
@@ -45,6 +46,11 @@ public class CanvasHandler extends JPanel {
                 repaint();
             }
         });
+
+        //action listener
+        ActionListener detectButtonListener = new ButtonActionListener();
+
+
     }
 
     //canvas size
@@ -59,7 +65,7 @@ public class CanvasHandler extends JPanel {
         drawSquare(g, this.startX, this.startY, this.endX, this.endY);
     }
 
-    //mouse listener
+    //drawing a rectangle
     private void setStartPoint(int currentX, int currentY) {
         this.startX = currentX;
         this.startY = currentY;
@@ -74,7 +80,8 @@ public class CanvasHandler extends JPanel {
         setStartPoint(e.getX(), e.getY());
     }
 
-    private void drawSquare(Graphics g, int startX, int startY, int endX, int endY) {
+    private void drawSquare(Graphics g, int startX, int startY
+            , int endX, int endY) {
 
         int px = Math.min(startX, endX);
         int py = Math.min(startY, endY);

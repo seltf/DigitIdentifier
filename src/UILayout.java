@@ -2,6 +2,7 @@
  * Created by alex on 19/02/2019.
  */
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,13 +29,16 @@ public class UILayout {
 
         //creating components
         detectButton = new JButton ("Detect");
+            ActionListener detectButtonListener = new ButtonActionListener();
+            detectButton.addActionListener(detectButtonListener);
+
         canvasPanel = new JPanel();
 
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
         //adding the canvas
-        mainWindow.add(new CanvasHandler());
+        mainWindow.add(new ActionHandler());
 
         //adding components to content panel
         contentPanel.add(detectButton);
