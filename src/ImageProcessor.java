@@ -11,12 +11,6 @@ import java.io.File;
 
 public class ImageProcessor {
 
-    private void saveCanvasAsImage(){
-
-
-
-    }
-
     private void canvasToImage(Component canvasPanel)
     {
         Dimension size = canvasPanel.getSize();

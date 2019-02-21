@@ -11,10 +11,9 @@ import java.awt.Graphics;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
-public class ActionHandler extends JPanel {
+public class CanvasHandler extends JPanel {
 
     //drawing vars
     private int startX = 0;
@@ -22,7 +21,7 @@ public class ActionHandler extends JPanel {
     private int endX = 0;
     private int endY = 0;
 
-    public ActionHandler() {
+    public CanvasHandler() {
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         //mouse listeners
@@ -48,7 +47,7 @@ public class ActionHandler extends JPanel {
         });
 
         //action listener
-        ActionListener detectButtonListener = new ButtonActionListener();
+        ActionListener detectButtonListener = new DetectEvent();
 
 
     }

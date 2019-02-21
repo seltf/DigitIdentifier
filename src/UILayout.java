@@ -29,7 +29,7 @@ public class UILayout {
 
         //creating components
         detectButton = new JButton ("Detect");
-            ActionListener detectButtonListener = new ButtonActionListener();
+            ActionListener detectButtonListener = new DetectEvent();
             detectButton.addActionListener(detectButtonListener);
 
         canvasPanel = new JPanel();
@@ -38,7 +38,7 @@ public class UILayout {
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
         //adding the canvas
-        mainWindow.add(new ActionHandler());
+        mainWindow.add(new CanvasHandler());
 
         //adding components to content panel
         contentPanel.add(detectButton);
