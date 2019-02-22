@@ -46,10 +46,6 @@ public class CanvasHandler extends JPanel {
             }
         });
 
-        //action listener
-        ActionListener detectButtonListener = new DetectEvent();
-
-
     }
 
     //canvas size

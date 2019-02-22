@@ -11,22 +11,19 @@ import java.io.File;
 
 public class ImageProcessor {
 
-    private void canvasToImage(Component canvasPanel)
-    {
+    private void canvasToImage(Component canvasPanel) {
         Dimension size = canvasPanel.getSize();
         BufferedImage image = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 = image.createGraphics();
         canvasPanel.paint(g2);
-        try
-        {
+
+        try {
             ImageIO.write(image, "png", new File("canvasOutput.png"));
             System.out.println("Canvas saved as png.");
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
+    }
 
 }
