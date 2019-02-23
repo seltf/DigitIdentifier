@@ -1,7 +1,7 @@
 /**
  * Created by alex on 19/02/2019.
  */
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,6 +34,8 @@ public class UILayout {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("event triggered.");
+                Dimension imageSize = canvasPanel.getSize();
+
                 try {
                     //save image function
                 } catch (Exception e1) {
