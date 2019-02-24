@@ -38,7 +38,7 @@ public class UILayout {
         detectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Detect button triggered.");
+                System.out.println("Detect button triggered");
 
                 //convert canvas to a buffered image
                 Dimension imageSize = mainWindow.getSize();
@@ -49,10 +49,10 @@ public class UILayout {
                 //write to disk
                 try {
                     ImageIO.write(exportedImage, "png", new File("exportedImage.png"));
-                    System.out.println("Canvas saved to disk.");
+                    System.out.println("Canvas saved to disk");
 
                 } catch (Exception e2) {
-                    System.out.println("An error occurred while saving image to disk.");
+                    System.out.println("An error occurred while saving image to disk");
                 }
 
             }//action listener
@@ -62,7 +62,11 @@ public class UILayout {
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
         //adding the canvas
-        mainWindow.add(new Canvas());
+        try {
+            mainWindow.add(new Canvas());
+        } catch (Exception e) {
+            System.out.println("An error occurred while initiating the canvas.");
+        }
 
         //adding components to content panel
         contentPanel.add(detectButton);
