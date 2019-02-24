@@ -1,5 +1,7 @@
 /**
- * Created by alex on 19/02/2019.
+ * Author: Alexander Hill
+ *
+ * Main
  */
 
 public class Main {

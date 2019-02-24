@@ -1,5 +1,7 @@
 /**
- * Created by alex on 19/02/2019.
+ * Author: Alexander Hill
+ *
+ * This class handles the main layout of the program.
  */
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -47,21 +49,20 @@ public class UILayout {
                 //write to disk
                 try {
                     ImageIO.write(exportedImage, "png", new File("exportedImage.png"));
+                    System.out.println("Canvas saved to disk.");
 
                 } catch (Exception e2) {
                     System.out.println("An error occurred while saving image to disk.");
                 }
 
-            }
-        });
-
-        canvasPanel = new JPanel();
+            }//action listener
+        });//detect button
 
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
         //adding the canvas
-        mainWindow.add(new CanvasHandler());
+        mainWindow.add(new Canvas());
 
         //adding components to content panel
         contentPanel.add(detectButton);
@@ -71,6 +72,6 @@ public class UILayout {
         mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
 
-    }
+    }//uilayout()
 
-}
+}//end of class
