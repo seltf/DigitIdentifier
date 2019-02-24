@@ -86,5 +86,4 @@ public class CanvasHandler extends JPanel {
 
     }
 
-
 }

@@ -4,7 +4,10 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -33,14 +36,22 @@ public class UILayout {
         detectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("event triggered.");
-                Dimension imageSize = canvasPanel.getSize();
+                System.out.println("Detect button triggered.");
 
+                //convert canvas to a buffered image
+                Dimension imageSize = mainWindow.getSize();
+                BufferedImage exportedImage = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_INT_RGB);
+                Graphics2D g2d = exportedImage.createGraphics();
+                mainWindow.paint(g2d);
+
+                //write to disk
                 try {
-                    //save image function
-                } catch (Exception e1) {
-                    System.out.println("Error occurred while triggering event.");
+                    ImageIO.write(exportedImage, "png", new File("exportedImage.png"));
+
+                } catch (Exception e2) {
+                    System.out.println("An error occurred while saving image to disk.");
                 }
+
             }
         });
 
@@ -59,16 +70,6 @@ public class UILayout {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
-
-    }
-
-    public void saveCanvasAsImage(){
-
-        try {
-
-        } catch (Exception e) {
-            System.out.println("Error occurred while saving image.");
-        }
 
     }
 
