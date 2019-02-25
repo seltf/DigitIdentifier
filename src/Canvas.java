@@ -5,10 +5,7 @@
  */
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import java.awt.Image;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.Color;
+import java.awt.*;
 
 import java.awt.event.*;
 
@@ -37,6 +34,7 @@ public class Canvas extends JComponent {
                 currentX = e.getX();
                 currentY = e.getY();
 
+                g2.setStroke(new BasicStroke(5));
                 g2.drawLine(oldX, oldY, currentX, currentY);
                 repaint();
 
