@@ -75,8 +75,6 @@ public class FileHandler {
             e.printStackTrace();
         }//end of reading data
 
-
-
     }//end of filehandler()
 
 }//end of class
