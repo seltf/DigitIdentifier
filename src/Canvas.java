@@ -42,6 +42,7 @@ public class Canvas extends JComponent {
 
                 //draw line between old and new x, y coords
                 g2.drawLine(oldX, oldY, currentX, currentY);
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 repaint();
 
                 //update old and new x, y coords
@@ -57,6 +58,13 @@ public class Canvas extends JComponent {
             g2 = (Graphics2D) canvasImage.getGraphics();
         }
         g.drawImage(canvasImage, 0, 0, null);
+    }
+
+    public void clearCanvas() {
+        g2.setPaint(Color.BLACK);
+        g2.fillRect(0, 0, getSize().width, getSize().height);
+        g2.setPaint(Color.WHITE);
+        repaint();
     }
 
     public void saveImage(){

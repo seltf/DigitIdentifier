@@ -22,6 +22,7 @@ public class UILayout {
     private JLabel digitOutput;
     private JButton detectButton;
     private JLabel outputText;
+    private JButton clearCanvasButton;
 
     public UILayout() {
 
@@ -48,6 +49,21 @@ public class UILayout {
             }//action listener
         });//detect button
 
+        //setting up the clear canvas button
+        clearCanvasButton = new JButton("Clear");
+        clearCanvasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Clear canvas button triggered");
+                try {
+                    canvas.clearCanvas();
+                } catch (Exception e2) {
+                    System.out.println("An error occurred while clearing the canvas");
+                    e2.printStackTrace();
+                }
+            }
+        }); //clear canvas button
+
         //creating the output text label
         outputText = new JLabel(" Output: ");
 
@@ -63,6 +79,7 @@ public class UILayout {
 
         //adding components to content panel
         contentPanel.add(detectButton);
+        contentPanel.add(clearCanvasButton);
         contentPanel.add(outputText, BorderLayout.EAST);
 
         //final main window steps
@@ -70,6 +87,10 @@ public class UILayout {
         mainWindow.setSize(500, 500);
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
+
+        canvas.clearCanvas();
+
+        new FileHandler();
 
     }//uilayout()
 

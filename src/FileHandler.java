@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Author: Alexander Hill
  *
- *
+ * Read MNIST data and store it in an array
  */
 public class FileHandler {
 
@@ -25,9 +25,7 @@ public class FileHandler {
             e.printStackTrace();
         }
 
-        try {
-
-            //reading the data
+        try { //reading the data
             int labels_start_code = (in_stream_labels.read() << 24) |
                     (in_stream_labels.read() << 16) |
                     (in_stream_labels.read() << 8) |
@@ -43,11 +41,40 @@ public class FileHandler {
 
             //print images start code
             System.out.println("images start code: " + images_start_code);
+
+            //read next 4 bytes for number of labels
+            int numberOfLabels = (in_stream_labels.read() << 24) |
+                    (in_stream_labels.read() << 16) |
+                    (in_stream_labels.read() << 8) |
+                    (in_stream_labels.read());
+
+            //read next 4 bytes for number of images
+            int numberOfImages  = (in_stream_images.read() << 24) |
+                    (in_stream_images.read() << 16) |
+                    (in_stream_images.read() << 8) |
+                    (in_stream_images.read());
+
+            //print number of labels and images
+            System.out.println("number of labels and images: " + numberOfLabels + " and " + numberOfImages);
+
+            //read next 4 bytes for rows
+            int imageHeight = (in_stream_images.read() << 24) |
+                    (in_stream_images.read() << 16) |
+                    (in_stream_images.read() << 8) |
+                    (in_stream_images.read());
+
+            //read next 4 bytes for columns
+            int imageWidth = (in_stream_images.read() << 24) |
+                    (in_stream_images.read() << 16) |
+                    (in_stream_images.read() << 8) |
+                    (in_stream_images.read());
+
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-    }
+        }//end of reading data
 
 
-}
+
+    }//end of filehandler()
+
+}//end of class
