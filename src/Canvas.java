@@ -23,7 +23,6 @@ public class Canvas extends JComponent {
     public Canvas() {
         //add border around the canvas area
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        setBackground(Color.BLACK);
 
         //set starting coords when mouse is pressed
         addMouseListener(new MouseAdapter() {
