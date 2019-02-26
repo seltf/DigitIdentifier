@@ -21,7 +21,7 @@ public class UILayout {
     private JPanel canvasPanel;
     private JLabel digitOutput;
     private JButton detectButton;
-    private JLabel text;
+    private JLabel outputText;
 
     public UILayout() {
 
@@ -39,7 +39,6 @@ public class UILayout {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Detect button triggered");
-
                 try {
                     canvas.saveImage();
                 } catch (Exception e2) {
@@ -49,22 +48,27 @@ public class UILayout {
             }//action listener
         });//detect button
 
+        //creating the output text label
+        outputText = new JLabel(" Output: ");
+
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
 
-        //adding the canvas
+        //adding the canvas and catching errors
         try {
-            mainWindow.add(canvas);
+            mainWindow.add(canvas, BorderLayout.CENTER);
         } catch (Exception e) {
             System.out.println("An error occurred while initiating the canvas.");
         }
 
         //adding components to content panel
         contentPanel.add(detectButton);
+        contentPanel.add(outputText, BorderLayout.EAST);
 
         //final main window steps
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setSize(500, 500);
+        mainWindow.setResizable(false);
         mainWindow.setVisible(true);
 
     }//uilayout()
