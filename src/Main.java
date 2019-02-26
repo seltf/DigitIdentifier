@@ -1,7 +1,7 @@
 /**
  * Author: Alexander Hill
  *
- * Main
+ * Initiate the program.
  */
 
 public class Main {
