@@ -3,6 +3,8 @@
  *
  * This class handles the canvas that the user can draw on.
  */
+import javafx.scene.layout.BackgroundFill;
+
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -21,6 +23,7 @@ public class Canvas extends JComponent {
     public Canvas() {
         //add border around the canvas area
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        setBackground(Color.BLACK);
 
         //set starting coords when mouse is pressed
         addMouseListener(new MouseAdapter() {
@@ -42,7 +45,6 @@ public class Canvas extends JComponent {
 
                 //draw line between old and new x, y coords
                 g2.drawLine(oldX, oldY, currentX, currentY);
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 repaint();
 
                 //update old and new x, y coords

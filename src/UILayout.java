@@ -88,8 +88,6 @@ public class UILayout {
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
 
-        canvas.clearCanvas();
-
         new FileHandler();
 
     }//uilayout()

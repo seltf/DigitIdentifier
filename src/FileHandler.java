@@ -69,6 +69,8 @@ public class FileHandler {
                     (in_stream_images.read() << 8) |
                     (in_stream_images.read());
 
+            System.out.println("image size: " + imageWidth + " x " + imageHeight);
+
         } catch (IOException e) {
             e.printStackTrace();
         }//end of reading data
