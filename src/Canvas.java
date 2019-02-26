@@ -40,7 +40,7 @@ public class Canvas extends JComponent {
                 currentY = e.getY();
 
                 //set line thickness
-                g2.setStroke(new BasicStroke(5));
+                g2.setStroke(new BasicStroke(10));
 
                 //draw line between old and new x, y coords
                 g2.drawLine(oldX, oldY, currentX, currentY);
