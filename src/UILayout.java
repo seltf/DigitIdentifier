@@ -26,6 +26,8 @@ public class UILayout {
 
     public UILayout() {
 
+        Canvas canvas = new Canvas();
+
         //creating main window
         mainWindow = new JFrame("Digit Identifier");
         mainWindow.setLayout(new BorderLayout());
@@ -41,15 +43,12 @@ public class UILayout {
                 System.out.println("Detect button triggered");
 
                 //convert canvas to a buffered image
-                Dimension imageSize = mainWindow.getSize();
-                BufferedImage exportedImage = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_INT_RGB);
-                Graphics2D g2d = exportedImage.createGraphics();
-                mainWindow.paint(g2d);
+
 
                 //write to disk
                 try {
-                    ImageIO.write(exportedImage, "png", new File("exportedImage.png"));
-                    System.out.println("Canvas saved to disk");
+
+                    canvas.saveImage();
 
                 } catch (Exception e2) {
                     System.out.println("An error occurred while saving image to disk");
@@ -63,7 +62,7 @@ public class UILayout {
 
         //adding the canvas
         try {
-            mainWindow.add(new Canvas());
+            mainWindow.add(canvas);
         } catch (Exception e) {
             System.out.println("An error occurred while initiating the canvas.");
         }

@@ -31,13 +31,19 @@ public class Canvas extends JComponent {
         //update coords as mouse is dragged and draw a line between them
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
+
+                //set starting coords
                 currentX = e.getX();
                 currentY = e.getY();
 
+                //set line thickness
                 g2.setStroke(new BasicStroke(5));
+
+                //draw line between old and new x, y coords
                 g2.drawLine(oldX, oldY, currentX, currentY);
                 repaint();
 
+                //update old and new x, y coords
                 oldX = currentX;
                 oldY = currentY;
 
