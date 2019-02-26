@@ -19,7 +19,6 @@ public class Canvas extends JComponent {
     private int currentX, currentY, oldX, oldY;
 
     public Canvas() {
-
         //add border around the canvas area
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -34,7 +33,6 @@ public class Canvas extends JComponent {
         //update coords as mouse is dragged and draw a line between them
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
-
                 //set starting coords
                 currentX = e.getX();
                 currentY = e.getY();
@@ -49,7 +47,6 @@ public class Canvas extends JComponent {
                 //update old and new x, y coords
                 oldX = currentX;
                 oldY = currentY;
-
             }
         });
     }//end of canvas()
@@ -59,17 +56,20 @@ public class Canvas extends JComponent {
             canvasImage = createImage(getSize().width, getSize().height);
             g2 = (Graphics2D) canvasImage.getGraphics();
         }
-
         g.drawImage(canvasImage, 0, 0, null);
     }
 
     public void saveImage(){
+        //create a new buffered image the size of the canvas
         Dimension imageSize = this.getSize();
         BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
+
+        //create a graphics2d object of the canvas and paint to it
         Graphics2D g2d = canvasExport.createGraphics();
         this.paint(g2d);
 
         try {
+            //write the buffered image to disk as png
             ImageIO.write(canvasExport, "png", new File("exportedImage.png"));
             System.out.println("Wrote canvas to disk");
         } catch (IOException e) {
