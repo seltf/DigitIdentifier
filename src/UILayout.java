@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,7 +26,6 @@ public class UILayout {
     public UILayout() {
 
         Canvas canvas = new Canvas();
-
         //creating main window
         mainWindow = new JFrame("Digit Identifier");
         mainWindow.setLayout(new BorderLayout());
@@ -42,16 +40,10 @@ public class UILayout {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Detect button triggered");
 
-                //convert canvas to a buffered image
-
-
-                //write to disk
                 try {
-
                     canvas.saveImage();
-
                 } catch (Exception e2) {
-                    System.out.println("An error occurred while saving image to disk");
+                    System.out.println("An error occurred while writing image to disk");
                 }
 
             }//action listener

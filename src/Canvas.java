@@ -3,11 +3,14 @@
  *
  * This class handles the canvas that the user can draw on.
  */
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import java.awt.*;
-
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Canvas extends JComponent {
 
@@ -58,6 +61,20 @@ public class Canvas extends JComponent {
         }
 
         g.drawImage(canvasImage, 0, 0, null);
+    }
+
+    public void saveImage(){
+        Dimension imageSize = this.getSize();
+        BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
+        Graphics2D g2d = canvasExport.createGraphics();
+        this.paint(g2d);
+
+        try {
+            ImageIO.write(canvasExport, "png", new File("exportedImage.png"));
+            System.out.println("Wrote canvas to disk");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }//end of class
