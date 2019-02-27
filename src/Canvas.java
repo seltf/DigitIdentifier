@@ -27,6 +27,9 @@ public class Canvas extends JComponent {
         //set starting coords when mouse is pressed
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                g2.setPaint(Color.black);
+                g2.fillRect(0,0,getSize().width, getSize().height);
+                g2.setPaint(Color.white);
                 oldX = e.getX();
                 oldY = e.getY();
             }
