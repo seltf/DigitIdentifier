@@ -18,11 +18,9 @@ public class UILayout {
 
     //swing Vars
     private JFrame mainWindow;
-    private JPanel canvasPanel;
-    private JLabel digitOutput;
-    private JButton detectButton;
-    private JLabel outputText;
-    private JButton clearCanvasButton;
+    private JPanel contentPanel, headerPanel;
+    private JLabel digitOutput, outputText, canvasHeader;
+    private JButton detectButton, clearCanvasButton;
 
     public UILayout() {
 
@@ -32,7 +30,10 @@ public class UILayout {
         mainWindow.setLayout(new BorderLayout());
 
         //create content panel
-        JPanel contentPanel = new JPanel();
+        contentPanel = new JPanel();
+
+        //create header panel
+        headerPanel = new JPanel();
 
         //setting up detect button
         detectButton = new JButton ("Detect");
@@ -64,8 +65,11 @@ public class UILayout {
             }
         }); //clear canvas button
 
-        //creating the output text label
+        //setting the output text label
         outputText = new JLabel(" Output: ");
+
+        //setting the canvas header text label
+        canvasHeader = new JLabel("Draw in the space below: ");
 
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
@@ -84,7 +88,7 @@ public class UILayout {
 
         //final main window steps
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainWindow.setSize(500, 500);
+        mainWindow.setSize(250, 250);
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
 
