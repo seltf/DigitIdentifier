@@ -7,7 +7,7 @@ import java.io.IOException;
  *
  * Read MNIST data and store it in an array
  */
-public class FileHandler {
+public class MnistLoader {
 
     //
     private String train_label_filename = "/Users/alex/Documents/mnist/train-labels.idx1-ubyte";
@@ -16,7 +16,7 @@ public class FileHandler {
     private FileInputStream in_stream_labels = null;
     private FileInputStream in_stream_images = null;
 
-    public FileHandler() {
+    public MnistLoader() {
 
         try {
             in_stream_labels = new FileInputStream(new File(train_label_filename));
@@ -25,6 +25,7 @@ public class FileHandler {
             e.printStackTrace();
         }
 
+        int numberOfLabels = 0;
         try { //reading the data
             int labels_start_code = (in_stream_labels.read() << 24) |
                     (in_stream_labels.read() << 16) |
@@ -43,13 +44,13 @@ public class FileHandler {
             System.out.println("images start code: " + images_start_code);
 
             //read next 4 bytes for number of labels
-            int numberOfLabels = (in_stream_labels.read() << 24) |
+            numberOfLabels = (in_stream_labels.read() << 24) |
                     (in_stream_labels.read() << 16) |
                     (in_stream_labels.read() << 8) |
                     (in_stream_labels.read());
 
             //read next 4 bytes for number of images
-            int numberOfImages  = (in_stream_images.read() << 24) |
+            int numberOfImages = (in_stream_images.read() << 24) |
                     (in_stream_images.read() << 16) |
                     (in_stream_images.read() << 8) |
                     (in_stream_images.read());
@@ -75,6 +76,8 @@ public class FileHandler {
             e.printStackTrace();
         }//end of reading data
 
-    }//end of filehandler()
+        int[] labelList = new int[numberOfLabels];
+
+    }//end of mnistloader()
 
 }//end of class

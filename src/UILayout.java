@@ -6,9 +6,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -92,7 +89,7 @@ public class UILayout {
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
 
-        new FileHandler();
+        new MnistLoader();
 
     }//uilayout()
 
