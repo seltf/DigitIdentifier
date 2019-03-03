@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,73 +11,106 @@ import java.io.IOException;
 public class MnistLoader {
 
     //
-    private String train_label_filename = "/Users/alex/Documents/mnist/train-labels.idx1-ubyte";
-    private String train_image_filename = "/Users/alex/Documents/mnist/train-images.idx3-ubyte";
+    private String trainLabelFilename = "/Users/alex/Documents/mnist/train-labels.idx1-ubyte";
+    private String trainImageFilename = "/Users/alex/Documents/mnist/train-images.idx3-ubyte";
 
-    private FileInputStream in_stream_labels = null;
-    private FileInputStream in_stream_images = null;
+    private FileInputStream inStreamLabels = null;
+    private FileInputStream inStreamImages = null;
 
     public MnistLoader() {
 
         try {
-            in_stream_labels = new FileInputStream(new File(train_label_filename));
-            in_stream_images = new FileInputStream(new File(train_image_filename));
+            inStreamLabels = new FileInputStream(new File(trainLabelFilename));
+            inStreamImages = new FileInputStream(new File(trainImageFilename));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         int numberOfLabels = 0;
+        int numberOfImages = 0;
+        int imageHeight = 0;
+        int imageWidth = 0;
+        int imageSize = 0;
+
         try { //reading the data
-            int labels_start_code = (in_stream_labels.read() << 24) |
-                    (in_stream_labels.read() << 16) |
-                    (in_stream_labels.read() << 8) |
-                    (in_stream_labels.read());
+            int labels_start_code = (inStreamLabels.read() << 24) |
+                    (inStreamLabels.read() << 16) |
+                    (inStreamLabels.read() << 8) |
+                    (inStreamLabels.read());
 
             //print label start code
             System.out.println("label start code: " + labels_start_code);
 
-            int images_start_code = (in_stream_images.read() << 24) |
-                    (in_stream_images.read() << 16) |
-                    (in_stream_images.read() << 8) |
-                    (in_stream_images.read());
+            int images_start_code = (inStreamImages.read() << 24) |
+                    (inStreamImages.read() << 16) |
+                    (inStreamImages.read() << 8) |
+                    (inStreamImages.read());
 
             //print images start code
             System.out.println("images start code: " + images_start_code);
 
             //read next 4 bytes for number of labels
-            numberOfLabels = (in_stream_labels.read() << 24) |
-                    (in_stream_labels.read() << 16) |
-                    (in_stream_labels.read() << 8) |
-                    (in_stream_labels.read());
+            numberOfLabels = (inStreamLabels.read() << 24) |
+                    (inStreamLabels.read() << 16) |
+                    (inStreamLabels.read() << 8) |
+                    (inStreamLabels.read());
 
             //read next 4 bytes for number of images
-            int numberOfImages = (in_stream_images.read() << 24) |
-                    (in_stream_images.read() << 16) |
-                    (in_stream_images.read() << 8) |
-                    (in_stream_images.read());
+            numberOfImages = (inStreamImages.read() << 24) |
+                    (inStreamImages.read() << 16) |
+                    (inStreamImages.read() << 8) |
+                    (inStreamImages.read());
 
             //print number of labels and images
             System.out.println("number of labels and images: " + numberOfLabels + " and " + numberOfImages);
 
             //read next 4 bytes for rows
-            int imageHeight = (in_stream_images.read() << 24) |
-                    (in_stream_images.read() << 16) |
-                    (in_stream_images.read() << 8) |
-                    (in_stream_images.read());
+            imageHeight = (inStreamImages.read() << 24) |
+                    (inStreamImages.read() << 16) |
+                    (inStreamImages.read() << 8) |
+                    (inStreamImages.read());
 
             //read next 4 bytes for columns
-            int imageWidth = (in_stream_images.read() << 24) |
-                    (in_stream_images.read() << 16) |
-                    (in_stream_images.read() << 8) |
-                    (in_stream_images.read());
+            imageWidth = (inStreamImages.read() << 24) |
+                    (inStreamImages.read() << 16) |
+                    (inStreamImages.read() << 8) |
+                    (inStreamImages.read());
 
             System.out.println("image size: " + imageWidth + " x " + imageHeight);
+            imageSize = imageWidth * imageHeight;
 
         } catch (IOException e) {
             e.printStackTrace();
         }//end of reading data
 
+        //create two new list for images and labels
         int[] labelList = new int[numberOfLabels];
+        int[] imageData;
+
+        //new buffered image for loading the images
+        BufferedImage currentImage;
+
+        //loop as many times as there are images
+        for (int i = 0; i < numberOfImages; i++) {
+            //the current image = the h and w of the data read from the mnist file
+            currentImage = new BufferedImage(imageHeight, imageWidth, BufferedImage.TYPE_INT_ARGB);
+
+            //read the next bytes from the label input
+            try{
+                int label = inStreamLabels.read();
+                labelList[i] = label;
+                System.out.println(label);
+            } catch (Exception e) {
+                System.out.println("error loading images");
+                e.printStackTrace();
+            }
+
+            //loop as many times as there are pixels in each image
+            for (int px = 0; px < imageSize; px++){
+
+            }
+
+        }
 
     }//end of mnistloader()
 

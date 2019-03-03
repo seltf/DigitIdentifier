@@ -75,6 +75,8 @@ public class Canvas extends JComponent {
         //create a new buffered image the size of the canvas
         Dimension imageSize = this.getSize();
         BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
+        //resize the image to match the mnist database images
+        //TODO: Resize the drawn image to 28x28
 
         //create a graphics2d object of the canvas and paint to it
         Graphics2D g2d = canvasExport.createGraphics();
