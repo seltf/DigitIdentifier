@@ -85,7 +85,7 @@ public class MnistLoader {
 
         //create two new list for images and labels
         int[] labelList = new int[numberOfLabels];
-        int[] imageData;
+        int[] imageData = new int[0];
 
         //new buffered image for loading the images
         BufferedImage currentImage;
@@ -107,10 +107,24 @@ public class MnistLoader {
 
             //loop as many times as there are pixels in each image
             for (int px = 0; px < imageSize; px++){
+                //read the next bytes in the stream
+                try {
+                    int grayValue = inStreamImages.read();
+                    int rgbValue = 0xFF000000 | (grayValue << 16) |
+                            (grayValue << 8) |
+                            (grayValue);
 
-            }
+                    imageData[px] = rgbValue;
 
-        }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }//end of loop (pixels)
+
+            currentImage.setRGB(0, 0, imageWidth, imageHeight, imageData, 0, imageWidth);
+
+        }//end of loop (images)
 
     }//end of mnistloader()
 
