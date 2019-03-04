@@ -85,7 +85,7 @@ public class MnistLoader {
 
         //create two new list for images and labels
         int[] labelList = new int[numberOfLabels];
-        int[] imageData = new int[0];
+        int[] imageData = new int[numberOfImages];
 
         //new buffered image for loading the images
         BufferedImage currentImage;
@@ -99,7 +99,7 @@ public class MnistLoader {
             try{
                 int label = inStreamLabels.read();
                 labelList[i] = label;
-                System.out.println(label);
+                System.out.println("Reading labels to list: " + "(" + i + "/" + numberOfLabels + ")");
             } catch (Exception e) {
                 System.out.println("error loading images");
                 e.printStackTrace();
