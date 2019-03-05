@@ -22,6 +22,7 @@ public class MnistLoader {
     int imageHeight = 0;
     int imageWidth = 0;
     int imageSize = 0;
+
     public MnistLoader() {
 
         try {
@@ -93,6 +94,7 @@ public class MnistLoader {
         BufferedImage currentImage;
 
         //loop as many times as there are images
+        System.out.println("Loading...");
         for (int i = 0; i < numberOfImages; i++) {
             //the current image = the h and w of the data read from the mnist file
             currentImage = new BufferedImage(imageHeight, imageWidth, BufferedImage.TYPE_INT_ARGB);
@@ -101,7 +103,7 @@ public class MnistLoader {
             try{
                 int label = inStreamLabels.read();
                 labelList[i] = label;
-                System.out.println("Reading labels to list: " + "(" + i + "/" + numberOfLabels + ")");
+                //System.out.println("Reading labels to list: " + "(" + i + "/" + numberOfLabels + ")");
             } catch (Exception e) {
                 System.out.println("error loading images");
                 e.printStackTrace();
@@ -124,10 +126,13 @@ public class MnistLoader {
 
             }//end of loop (pixels)
 
+            //set pixel array to the current image
             currentImage.setRGB(0, 0, imageWidth, imageHeight, imageData, 0, imageWidth);
+
 
         }//end of loop (images)
 
+        System.out.println("Loading complete");
     }//end of loadData()
 
 }//end of class
