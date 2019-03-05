@@ -17,6 +17,11 @@ public class MnistLoader {
     private FileInputStream inStreamLabels = null;
     private FileInputStream inStreamImages = null;
 
+    int numberOfLabels = 0;
+    int numberOfImages = 0;
+    int imageHeight = 0;
+    int imageWidth = 0;
+    int imageSize = 0;
     public MnistLoader() {
 
         try {
@@ -25,12 +30,6 @@ public class MnistLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        int numberOfLabels = 0;
-        int numberOfImages = 0;
-        int imageHeight = 0;
-        int imageWidth = 0;
-        int imageSize = 0;
 
         try { //reading the data
             int labels_start_code = (inStreamLabels.read() << 24) |
@@ -83,6 +82,9 @@ public class MnistLoader {
             e.printStackTrace();
         }//end of reading data
 
+    }//end of mnistloader()
+
+    public void loadData(){
         //create two new list for images and labels
         int[] labelList = new int[numberOfLabels];
         int[] imageData = new int[numberOfImages];
@@ -126,6 +128,6 @@ public class MnistLoader {
 
         }//end of loop (images)
 
-    }//end of mnistloader()
+    }//end of loadData()
 
 }//end of class

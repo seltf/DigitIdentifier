@@ -11,7 +11,6 @@ public class Main {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    
                     //create window
                     new UILayout();
 

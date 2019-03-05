@@ -21,6 +21,11 @@ public class UILayout {
 
     public UILayout() {
 
+        //read the mnist data
+        MnistLoader mnistLoader = new MnistLoader();
+        //add the mnist data to arrays
+        mnistLoader.loadData();
+
         Canvas canvas = new Canvas();
         //creating main window
         mainWindow = new JFrame("Digit Identifier");
@@ -88,8 +93,6 @@ public class UILayout {
         mainWindow.setSize(250, 250);
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
-
-        new MnistLoader();
 
     }//uilayout()
 

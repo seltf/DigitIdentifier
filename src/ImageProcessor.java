@@ -21,10 +21,19 @@ public class ImageProcessor {
 
     public ImageProcessor(){
         importedImage = null;
+
+        
+
     }
 
-    public void readImage() throws IOException {
-        importedImage = ImageIO.read(new File("exportedImage.png"));
+    public void readImage(){
+
+        try {
+            importedImage = ImageIO.read(new File("exportedImage.png"));
+        } catch (Exception e) {
+            System.out.println("Error importing image.");
+            e.printStackTrace();
+        }
     }
 
 
