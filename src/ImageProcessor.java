@@ -1,3 +1,8 @@
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Author: Alexander Hill
  *
@@ -12,6 +17,15 @@
  */
 public class ImageProcessor {
 
+     BufferedImage importedImage;
+
+    public ImageProcessor(){
+        importedImage = null;
+    }
+
+    public void readImage() throws IOException {
+        importedImage = ImageIO.read(new File("exportedImage.png"));
+    }
 
 
 }
