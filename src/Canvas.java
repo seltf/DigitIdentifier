@@ -69,12 +69,27 @@ public class Canvas extends JComponent {
         repaint();
     }
 
+    public void resizeImage(){
+        BufferedImage canvasExport = new BufferedImage(28, 28, BufferedImage.TYPE_BYTE_GRAY);
+        Graphics2D g2d = canvasExport.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2d.drawImage(canvasImage, 0, 0, 28, 28, null);
+
+        g2d.dispose();
+    }
+
     public void saveImage(){
         //create a new buffered image the size of the canvas
         Dimension imageSize = this.getSize();
         BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
         //resize the image to match the mnist database images
         //TODO: Resize the drawn image to 28x28
+        try {
+            resizeImage();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         //create a graphics2d object of the canvas and paint to it
         Graphics2D g2d = canvasExport.createGraphics();

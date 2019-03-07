@@ -15,8 +15,8 @@ public class Main {
                     new UILayout();
 
                 } catch (Exception e) {
-                    System.out.println("Error occurred while initiating "
-                            + "the swing thread.");
+                    System.out.println("Error occurred while initiating the swing thread.");
+                    e.printStackTrace();
                 }
 
             }

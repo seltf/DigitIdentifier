@@ -59,6 +59,7 @@ public class UILayout {
 
                     //update the output text with the predicted digit
                     updateOutput();
+
                 } catch (Exception e2) {
                     System.out.println("An error occurred while writing image to disk");
                 }

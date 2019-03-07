@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
 public class MnistLoader {
 
     //
@@ -19,11 +20,13 @@ public class MnistLoader {
     private FileInputStream inStreamLabels = null;
     private FileInputStream inStreamImages = null;
 
-    int numberOfLabels = 0;
+    int numberOfLabels = 60000;
     int numberOfImages = 0;
     int imageHeight = 0;
     int imageWidth = 0;
     int imageSize = 0;
+
+    int[] labelList = new int[numberOfLabels];
 
     public ArrayList<BufferedImage> mnistArrayList = new ArrayList<BufferedImage>();
 
@@ -92,7 +95,7 @@ public class MnistLoader {
 
     public void loadData(){
         //create two new list for images and labels
-        int[] labelList = new int[numberOfLabels];
+
         int[] imageData = new int[numberOfImages];
 
         //new buffered image for loading the images
@@ -147,9 +150,12 @@ public class MnistLoader {
         System.out.println("Loading complete");
     }//end of loadData()
 
+
+
     //TODO: Delete this.
     public void debugExportMnistImage(){
 
+        System.out.println(labelList[560]);
         Graphics2D g2d = mnistArrayList.get(560).createGraphics();
         this.paint(g2d);
  

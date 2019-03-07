@@ -9,7 +9,7 @@ import java.io.File;
 
 public class ImageProcessor {
 
-     BufferedImage importedImage;
+    BufferedImage importedImage;
 
     public ImageProcessor(){
         importedImage = null;
@@ -23,6 +23,7 @@ public class ImageProcessor {
             System.out.println("Error importing image.");
             e.printStackTrace();
         }
+
     }//end of readImage()
 
 }
