@@ -2,6 +2,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Author: Alexander Hill
@@ -22,6 +23,8 @@ public class MnistLoader {
     int imageHeight = 0;
     int imageWidth = 0;
     int imageSize = 0;
+
+    ArrayList<BufferedImage> mnistArrayList = new ArrayList<BufferedImage>();
 
     public MnistLoader() {
 
@@ -79,6 +82,8 @@ public class MnistLoader {
             System.out.println("image size: " + imageWidth + " x " + imageHeight);
             imageSize = imageWidth * imageHeight;
 
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }//end of reading data
@@ -129,6 +134,12 @@ public class MnistLoader {
             //set pixel array to the current image
             currentImage.setRGB(0, 0, imageWidth, imageHeight, imageData, 0, imageWidth);
 
+            try {
+                mnistArrayList.add(currentImage);
+            } catch (Exception e) {
+                System.out.println("Error when adding image to arraylist");
+                e.printStackTrace();
+            }
 
         }//end of loop (images)
 

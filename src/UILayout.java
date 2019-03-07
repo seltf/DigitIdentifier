@@ -68,7 +68,7 @@ public class UILayout {
         }); //clear canvas button
 
         //setting the output text label
-        outputText = new JLabel(" Output: ");
+        outputText = new JLabel(" Output: " );
 
         //setting the canvas header text label
         canvasHeader = new JLabel("Draw in the space below: ");
