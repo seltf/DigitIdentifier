@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class MnistLoader {
 
     //
-    private String trainLabelFilename = "/Users/alex/Documents/mnist/train-labels.idx1-ubyte";
-    private String trainImageFilename = "/Users/alex/Documents/mnist/train-images.idx3-ubyte";
+    private String trainLabelFilename = "train-labels.idx1-ubyte";
+    private String trainImageFilename = "train-images.idx3-ubyte";
 
     private FileInputStream inStreamLabels = null;
     private FileInputStream inStreamImages = null;
