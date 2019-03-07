@@ -153,7 +153,7 @@ public class MnistLoader {
 
         Graphics2D g2d = mnistArrayList.get(560).createGraphics();
         this.paint(g2d);
-
+ 
         try {
             //write the buffered image to disk as png
             ImageIO.write(mnistArrayList.get(560), "png", new File("mnistTestImage.png"));
