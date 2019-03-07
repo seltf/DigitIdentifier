@@ -45,6 +45,7 @@ public class UILayout {
                 System.out.println("Detect button triggered");
                 try {
                     canvas.saveImage();
+                    new ImageProcessor();
                 } catch (Exception e2) {
                     System.out.println("An error occurred while writing image to disk");
                 }

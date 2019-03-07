@@ -135,6 +135,7 @@ public class MnistLoader {
             currentImage.setRGB(0, 0, imageWidth, imageHeight, imageData, 0, imageWidth);
 
             try {
+                //try to add the current image to an arraylist
                 mnistArrayList.add(currentImage);
             } catch (Exception e) {
                 System.out.println("Error when adding image to arraylist");

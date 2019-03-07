@@ -20,11 +20,10 @@ public class ImageProcessor {
      BufferedImage importedImage;
 
     public ImageProcessor(){
+        MnistLoader mnistLoader = new MnistLoader();
+        System.out.println(mnistLoader.mnistArrayList);
         importedImage = null;
-
-        
-
-    }
+    }//end of ImageProcessor()
 
     public void readImage(){
 
@@ -34,7 +33,6 @@ public class ImageProcessor {
             System.out.println("Error importing image.");
             e.printStackTrace();
         }
-    }
-
+    }//end of readImage()
 
 }
