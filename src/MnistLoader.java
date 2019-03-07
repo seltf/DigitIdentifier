@@ -1,3 +1,5 @@
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -145,5 +147,25 @@ public class MnistLoader {
 
         System.out.println("Loading complete");
     }//end of loadData()
+
+    //TODO: Delete this.
+    public void debugExportMnistImage(){
+
+        Graphics2D g2d = mnistArrayList.get(560).createGraphics();
+        this.paint(g2d);
+
+        try {
+            //write the buffered image to disk as png
+            ImageIO.write(mnistArrayList.get(560), "png", new File("mnistTestImage.png"));
+            System.out.println("Wrote mnist to disk");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void paint(Graphics2D g2d) {
+    }
+
 
 }//end of class

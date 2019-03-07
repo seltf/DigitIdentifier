@@ -27,7 +27,10 @@ public class UILayout {
         //read the mnist data
         MnistLoader mnistLoader = new MnistLoader();
         //add the mnist data to arrays
-        //mnistLoader.loadData();
+        mnistLoader.loadData();
+
+        //TODO: Delete this too.
+        mnistLoader.debugExportMnistImage();
 
         Canvas canvas = new Canvas();
         //creating main window
@@ -72,6 +75,7 @@ public class UILayout {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Clear canvas button triggered");
                 try {
+                    //reset the canvas to full black
                     canvas.clearCanvas();
                 } catch (Exception e2) {
                     System.out.println("An error occurred while clearing the canvas");
@@ -81,7 +85,7 @@ public class UILayout {
         }); //clear canvas button
 
         //setting the output text label
-        outputLabel = new JLabel(" Output: " + outputDigit);
+        outputLabel = new JLabel(" Output: ");
 
         //setting the canvas header text label
         canvasHeader = new JLabel("Draw in the space below: ");
