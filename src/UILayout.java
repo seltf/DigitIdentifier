@@ -3,8 +3,6 @@
  *
  * This class handles the main layout of the program.
  */
-import com.sun.org.apache.xalan.internal.xsltc.dom.SimpleResultTreeImpl;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

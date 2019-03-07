@@ -3,8 +3,6 @@
  *
  * This class handles the canvas that the user can draw on.
  */
-import javafx.scene.layout.BackgroundFill;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
