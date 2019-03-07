@@ -24,10 +24,9 @@ public class MnistLoader {
     int imageWidth = 0;
     int imageSize = 0;
 
-    ArrayList<BufferedImage> mnistArrayList = new ArrayList<BufferedImage>();
+    public ArrayList<BufferedImage> mnistArrayList = new ArrayList<BufferedImage>();
 
     public MnistLoader() {
-
         try {
             inStreamLabels = new FileInputStream(new File(trainLabelFilename));
             inStreamImages = new FileInputStream(new File(trainImageFilename));

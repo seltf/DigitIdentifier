@@ -3,28 +3,31 @@
  *
  * This class handles the main layout of the program.
  */
+import com.sun.org.apache.xalan.internal.xsltc.dom.SimpleResultTreeImpl;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 public class UILayout {
 
-    //swing Vars
+    //vars
     private JFrame mainWindow;
     private JPanel contentPanel, headerPanel;
-    private JLabel digitOutput, outputText, canvasHeader;
+    private JLabel digitOutput, outputLabel, canvasHeader;
     private JButton detectButton, clearCanvasButton;
+    public String outputText = "Output: n/a";
+    public int outputDigit;
+
+
 
     public UILayout() {
 
         //read the mnist data
         MnistLoader mnistLoader = new MnistLoader();
         //add the mnist data to arrays
-        mnistLoader.loadData();
+        //mnistLoader.loadData();
 
         Canvas canvas = new Canvas();
         //creating main window
@@ -44,8 +47,17 @@ public class UILayout {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Detect button triggered");
                 try {
+                    //save the current canvas state
                     canvas.saveImage();
+
+                    //initiate the image processor class
                     new ImageProcessor();
+
+                    //TODO: Change this to the predicted digit.
+                    outputDigit = 5;
+
+                    //update the output text with the predicted digit
+                    updateOutput();
                 } catch (Exception e2) {
                     System.out.println("An error occurred while writing image to disk");
                 }
@@ -69,7 +81,7 @@ public class UILayout {
         }); //clear canvas button
 
         //setting the output text label
-        outputText = new JLabel(" Output: " );
+        outputLabel = new JLabel(" Output: " + outputDigit);
 
         //setting the canvas header text label
         canvasHeader = new JLabel("Draw in the space below: ");
@@ -87,7 +99,7 @@ public class UILayout {
         //adding components to content panel
         contentPanel.add(detectButton);
         contentPanel.add(clearCanvasButton);
-        contentPanel.add(outputText, BorderLayout.EAST);
+        contentPanel.add(outputLabel, BorderLayout.EAST);
 
         //final main window steps
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,5 +108,10 @@ public class UILayout {
         mainWindow.setVisible(true);
 
     }//uilayout()
+
+    //call this to update the output text
+    public void updateOutput() {
+        outputLabel.setText("Output: " + outputDigit);
+    }
 
 }//end of class

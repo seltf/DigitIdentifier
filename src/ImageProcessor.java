@@ -20,8 +20,6 @@ public class ImageProcessor {
      BufferedImage importedImage;
 
     public ImageProcessor(){
-        MnistLoader mnistLoader = new MnistLoader();
-        System.out.println(mnistLoader.mnistArrayList);
         importedImage = null;
     }//end of ImageProcessor()
 
