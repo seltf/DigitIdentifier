@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.nio.Buffer;
 
 public class Canvas extends JComponent {
-
     private Image canvasImage;
     private Graphics2D g2;
     private int currentX, currentY, oldX, oldY;
@@ -33,7 +32,6 @@ public class Canvas extends JComponent {
                 oldY = e.getY();
             }
         });
-
         //update coords as mouse is dragged and draw a line between them
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
@@ -54,7 +52,6 @@ public class Canvas extends JComponent {
             }
         });
     }//end of canvas()
-
     protected void paintComponent(Graphics g) {
         if (canvasImage == null) {
             canvasImage = createImage(getSize().width, getSize().height);
@@ -62,14 +59,12 @@ public class Canvas extends JComponent {
         }
         g.drawImage(canvasImage, 0, 0, null);
     }
-
     public void clearCanvas() {
         g2.setPaint(Color.BLACK);
         g2.fillRect(0, 0, getSize().width, getSize().height);
         g2.setPaint(Color.WHITE);
         repaint();
     }
-
     public void saveImage(){
         //create a new buffered image the size of the canvas
         Dimension imageSize = this.getSize();
@@ -97,7 +92,6 @@ public class Canvas extends JComponent {
             e.printStackTrace();
         }
     }
-
 }//end of class
 
 

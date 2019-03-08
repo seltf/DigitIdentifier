@@ -12,11 +12,12 @@ public class UILayout {
 
     //vars
     private JFrame mainWindow;
-    private JPanel contentPanel, headerPanel;
-    private JLabel digitOutput, outputLabel, canvasHeader;
+    private JPanel contentPanel;
+    private JLabel outputLabel;
     private JButton detectButton, clearCanvasButton;
     public String outputText = "Output: n/a";
     public int outputDigit;
+    public float outputConfidence;
 
 
 
@@ -37,9 +38,6 @@ public class UILayout {
 
         //create content panel
         contentPanel = new JPanel();
-
-        //create header panel
-        headerPanel = new JPanel();
 
         //setting up detect button
         detectButton = new JButton ("Detect");
@@ -85,9 +83,6 @@ public class UILayout {
 
         //setting the output text label
         outputLabel = new JLabel(" Output: ");
-
-        //setting the canvas header text label
-        canvasHeader = new JLabel("Draw in the space below: ");
 
         //adding content panel to the main window
         mainWindow.add(contentPanel, BorderLayout.SOUTH);
