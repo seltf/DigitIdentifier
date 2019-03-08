@@ -11,6 +11,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 
 public class Canvas extends JComponent {
 
@@ -69,35 +70,28 @@ public class Canvas extends JComponent {
         repaint();
     }
 
-    public void resizeImage(){
-        BufferedImage canvasExport = new BufferedImage(28, 28, BufferedImage.TYPE_BYTE_GRAY);
-        Graphics2D g2d = canvasExport.createGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2d.drawImage(canvasImage, 0, 0, 28, 28, null);
-
-        g2d.dispose();
-    }
-
     public void saveImage(){
         //create a new buffered image the size of the canvas
         Dimension imageSize = this.getSize();
         BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
-        //resize the image to match the mnist database images
-        //TODO: Resize the drawn image to 28x28
-        try {
-            resizeImage();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
 
+        BufferedImage resizedImage = new BufferedImage(28, 28, BufferedImage.TYPE_BYTE_GRAY);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(canvasImage, 0, 0, 28, 28, null);
+        g.dispose();
+        g.setComposite(AlphaComposite.Src);
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 
+        this.paint(g);
         //create a graphics2d object of the canvas and paint to it
-        Graphics2D g2d = canvasExport.createGraphics();
-        this.paint(g2d);
+        //Graphics2D g2d = canvasExport.createGraphics();
+        //this.paint(g2d);
 
         try {
             //write the buffered image to disk as png
-            ImageIO.write(canvasExport, "png", new File("exportedImage.png"));
+            ImageIO.write(resizedImage, "png", new File("exportedImage.png"));
             System.out.println("Wrote canvas to disk");
         } catch (IOException e) {
             e.printStackTrace();
