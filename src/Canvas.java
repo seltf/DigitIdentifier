@@ -67,8 +67,8 @@ public class Canvas extends JComponent {
     }
     public void saveImage(){
         //create a new buffered image the size of the canvas
-        Dimension imageSize = this.getSize();
-        BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
+        //Dimension imageSize = this.getSize();
+        //BufferedImage canvasExport = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_BYTE_GRAY);
 
         BufferedImage resizedImage = new BufferedImage(28, 28, BufferedImage.TYPE_BYTE_GRAY);
         Graphics2D g = resizedImage.createGraphics();
